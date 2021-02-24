@@ -10,7 +10,7 @@ const StyledNavWrapper = styled(ContentWrapper)`
   align-items: center;
   width: 100%;
   height: 5rem;
-  background-color: midnightblue;
+  background-color: rgb(1, 61, 85);
 `;
 
 const Navbar = () => {

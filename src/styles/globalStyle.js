@@ -20,12 +20,14 @@ const GlobalStyle = createGlobalStyle`
         font-size: 1rem;
         line-height: 1.5rem;
         font-weight: 400;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
         text-rendering: optimizeLegibility;
         background-color: antiquewhite;
+    }
     a {
         display: inline-block;
         text-decoration: none;
-        text-decoration-skip-ink: auto;
         color: inherit;
         cursor: pointer;
         &:hover,
