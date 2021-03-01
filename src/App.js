@@ -1,10 +1,10 @@
 import React from 'react';
-import GlobalStyle from '../styles/globalStyle';
-import Layout from './Layout';
+import GlobalStyle from './styles/globalStyle';
+import Layout from './components/Layout';
 import { Route } from 'react-router-dom';
-import Home from '../pages/Home';
-import DealsPage from '../pages/DealsPage';
-import CartPage from '../pages/CartPage';
+import Home from './pages/Home';
+import DealsPage from './pages/DealsPage';
+import CartPage from './pages/CartPage';
 
 function App() {
   return (
