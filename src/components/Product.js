@@ -1,8 +1,19 @@
 import React from 'react';
+import ContentWrapper from '../styles/contentWrapper';
 import styled from 'styled-components';
-import Rating from '../Rating';
+import Rating from '../components/Rating';
 
-const StyledCard = styled.article`
+// const StyledContainer = styled(ContentWrapper)`
+//   && {
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//   }
+// `;
+
+const StyledContainer = styled.article`
   display: flex;
   flex-direction: column;
   flex-basis: calc(50% - 20px);
@@ -19,6 +30,7 @@ const StyledCard = styled.article`
   border-radius: 5px;
   .product-img {
     width: 100%;
+    max-width: 400px;
   }
   .price p {
     font-weight: 700;
@@ -51,28 +63,29 @@ const StyledCard = styled.article`
   }
 `;
 
-const Card = ({ item, handleOpen }) => {
+const Product = ({ data }) => {
+  console.log(data);
   return (
-    <StyledCard>
+    <StyledContainer>
       {/* {children} */}
       <figure className="product-img">
-        <img src={item.imageUrl} alt={item.name} />
+        <img src={data.imageUrl} alt={data.name} />
       </figure>
-      <p>{item.name}</p>
+      <p>{data.name}</p>
 
       {/* <div className="rate">rating</div> */}
-      <Rating rateScore={item.avgRating} count={item.stockCount} />
+      <Rating rateScore={data.avgRating} count={data.stockCount} />
       <div className="price">
         <p>
-          ${item.price}
-          {item.isOnSale && <span class="badge badge-sale">On sale</span>}
+          ${data.price}
+          {data.isOnSale && <span class="badge badge-sale">On sale</span>}
         </p>
       </div>
-      <button className="btn-cta" onClick={() => handleOpen(item)}>
+      {/* <button className="btn-cta" onClick={() => handleOpen(data)}>
         View Item
-      </button>
-    </StyledCard>
+      </button> */}
+    </StyledContainer>
   );
 };
 
-export default Card;
+export default Product;

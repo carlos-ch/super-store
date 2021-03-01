@@ -20,6 +20,8 @@ const StyledStar = styled.div`
   background-image: url(${props => props.url});
 `;
 
+const starArray = [1, 2, 3, 4, 5];
+
 const Rating = ({ rateScore, count }) => {
   let fillHalfStar = false;
   // for (let index = 0; index < 5; index++) {
@@ -27,7 +29,7 @@ const Rating = ({ rateScore, count }) => {
   // }
   return (
     <StyleRatingWrapper className="rating-count">
-      {Array(1, 2, 3, 4, 5).map((_, index) => {
+      {starArray.map((_, index) => {
         if (fillHalfStar || rateScore <= index)
           return <StyledStar url={emptyStarImg} />;
         if (rateScore > index) {
@@ -39,6 +41,7 @@ const Rating = ({ rateScore, count }) => {
           // console.log('star');
           return <StyledStar url={fullStarImg} />;
         }
+        return <StyledStar url={emptyStarImg} />;
       })}
       <small className="count">{count}</small>
     </StyleRatingWrapper>

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ContentWrapper from '../styles/contentWrapper';
 import Card from './Card/Card';
 import styled from 'styled-components';
 import Modal from './Modal';
+import Product from './Product';
 
 const StyledContainer = styled(ContentWrapper)`
   && {
@@ -89,11 +90,30 @@ const data = [
 ];
 
 const ItemList = ({ data }) => {
+  const [show, setShow] = useState(false);
+  const [active, setActive] = useState(null);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleOpen = product => {
+    setActive(product);
+    setShow(true);
+  };
+  console.log(active);
   return (
     <StyledContainer>
-      <Modal show={true}> Modal</Modal>
+      <Modal show={show} handleClose={handleClose}>
+        Modal
+        {active && <Product data={active} />}
+      </Modal>
       {data.map((item, index) => {
-        return <Card item={item} key={item._id + index}></Card>;
+        return (
+          <Card
+            item={item}
+            key={item._id + index}
+            handleOpen={handleOpen}
+          ></Card>
+        );
       })}
     </StyledContainer>
   );
