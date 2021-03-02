@@ -16,6 +16,7 @@ const StyledContainer = styled(ContentWrapper)`
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     grid-gap: 1.5rem;
     justify-content: center;
+    justify-items: center;
     align-items: stretch;
   }
 `;

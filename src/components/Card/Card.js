@@ -6,9 +6,10 @@ import Rating from '../Rating';
 const StyledCard = styled.article`
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   flex-basis: calc(50% - 20px);
   flex-grow: 1;
-  justify-content: flex-end;
+  max-width: 310px;
   padding: 1.5rem 2.4rem;
   background-color: whitesmoke;
   background: linear-gradient(
