@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ItemList from '../components/ItemList';
 import styled from 'styled-components';
 import ContentWrapper from '../styles/contentWrapper';
-import mockData from '../db/mock_data.json';
 import axios from 'axios';
+
+import mockData from '../db/mock_data.json';
 
 const API_URL =
   'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&isOnSale=true';

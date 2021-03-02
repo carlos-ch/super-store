@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Home from './pages/Home';
 import DealsPage from './pages/DealsPage';
 import CartPage from './pages/CartPage';
+import ProductPage from './pages/ProductPage';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route exact path="/cart">
           <CartPage />
+        </Route>
+        <Route exact path="/item/:id">
+          <ProductPage />
         </Route>
       </Layout>
     </div>
