@@ -11,28 +11,29 @@ const StyledModal = styled.div`
   display: ${props => (props.show ? 'block' : 'none')};
   .modal-section {
     position: fixed;
-    background: white;
+    background: whitesmoke;
     width: 80%;
     height: 85vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    overflow-y: auto;
   }
-  button {
+  .btn-close {
     position: absolute;
     top: 10px;
     right: 10px;
+    z-index: 10;
   }
 `;
 
 const Modal = ({ children, show, handleClose }) => {
   return (
     <StyledModal show={show}>
-      <section className="modal-section">
-        <button onClick={handleClose}>Close</button>
-
-        {children}
-      </section>
+      <button className="btn-close" onClick={handleClose}>
+        Close
+      </button>
+      <section className="modal-section">{children}</section>
     </StyledModal>
   );
 };

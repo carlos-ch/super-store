@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../../styles/button';
 import Rating from '../Rating';
 
 const StyledCard = styled.article`
@@ -37,17 +38,13 @@ const StyledCard = styled.article`
   .badge-sale {
     color: #fff;
     margin-left: 0.5rem;
-    // margin-right: 1rem;
     background-color: #dc3545;
   }
-  .btn-cta {
+`;
+
+const StyledButton = styled(Button)`
+  && {
     align-self: center;
-    background-color: #ffd19b;
-    width: fit-content;
-    padding: 0.5rem 2rem;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
   }
 `;
 
@@ -65,12 +62,12 @@ const Card = ({ item, handleOpen }) => {
       <div className="price">
         <p>
           ${item.price}
-          {item.isOnSale && <span class="badge badge-sale">On sale</span>}
+          {item.isOnSale && <span className="badge badge-sale">On sale</span>}
         </p>
       </div>
-      <button className="btn-cta" onClick={() => handleOpen(item)}>
+      <StyledButton className="btn-cta" onClick={() => handleOpen(item)}>
         View Item
-      </button>
+      </StyledButton>
     </StyledCard>
   );
 };

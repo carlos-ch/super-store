@@ -103,7 +103,6 @@ const ItemList = ({ data }) => {
   return (
     <StyledContainer>
       <Modal show={show} handleClose={handleClose}>
-        Modal
         {active && <Product data={active} />}
       </Modal>
       {data.map((item, index) => {
