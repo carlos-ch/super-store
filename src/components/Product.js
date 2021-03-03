@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ContentWrapper from '../styles/contentWrapper';
 import styled from 'styled-components';
 import Rating from '../components/Rating';
@@ -68,6 +68,7 @@ const StyledContainer = styled.article`
       border-radius: 3px;
       height: 2rem;
       margin-left: 0.5rem;
+      text-align: center;
       border: none;
     }
   }
@@ -98,8 +99,9 @@ const StyledButton = styled(Button)`
 `;
 
 const Product = ({ data }) => {
-  const message = true;
+  const [message, setMessage] = useState(true);
   console.log(data);
+
   return (
     <StyledContainer>
       {/* {children} */}
