@@ -1,18 +1,8 @@
 import React, { useState } from 'react';
-import ContentWrapper from '../styles/contentWrapper';
 import styled from 'styled-components';
 import Rating from '../components/Rating';
-import Button from '../styles/button';
-
-// const StyledContainer = styled(ContentWrapper)`
-//   && {
-//     width: 100%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//   }
-// `;
+import Banner from '../styles/banner';
+import InputSelector from './InputSelector';
 
 const StyledContainer = styled.article`
   display: flex;
@@ -92,26 +82,19 @@ const StyledContainer = styled.article`
   }
 `;
 
-const StyledButton = styled(Button)`
-  && {
-    align-self: center;
-  }
-`;
-
 const Product = ({ data }) => {
-  const [message, setMessage] = useState(true);
-  console.log(data);
+  // const productId = data._id;
+  const [alreadyInCart, setAlreadyInCart] = useState(0);
+  const [lowStock, setLowStock] = useState(false);
 
   return (
     <StyledContainer>
-      {/* {children} */}
       <figure className="product-img">
         <img src={data.imageUrl} alt={data.name} />
       </figure>
       <div className="product-details">
         <p className="product-name">{data.name}</p>
 
-        {/* <div className="rate">rating</div> */}
         <Rating rateScore={data.avgRating} count={data.stockCount} />
         <p className="description">{data.description}</p>
         <div className="price">
@@ -120,16 +103,18 @@ const Product = ({ data }) => {
             {data.isOnSale && <span className="badge badge-sale">On sale</span>}
           </p>
         </div>
-        <div className="quantity-count">
-          <p>Quantity:</p>
-          <input type="number" min="1" max="100" />
-        </div>
-        <StyledButton className="btn-add">Add to cart</StyledButton>
-        {message && <div>Message</div>}
+        <InputSelector
+          data={data}
+          setAlreadyInCart={setAlreadyInCart}
+          setLowStock={setLowStock}
+        ></InputSelector>
+        {lowStock && <Banner type="warning">Insufficient stock!</Banner>}
+        {alreadyInCart > 0 && (
+          <Banner type="info">
+            {alreadyInCart} of this item already in your cart.
+          </Banner>
+        )}
       </div>
-      {/* <button className="btn-cta" onClick={() => handleOpen(data)}>
-        View Item
-      </button> */}
     </StyledContainer>
   );
 };
