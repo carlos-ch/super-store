@@ -25,16 +25,22 @@ const productsOnSale = mockData.items.filter(item => item.isOnSale);
 const data = { products: productsOnSale };
 
 const DealsPage = () => {
-  // const [data, setData] = useState({ products: [], isFetching: false });
+  // const [data, setData] = useState({ products: [] });
+  // const [isFetching, setIsFetching] = useState(false);
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
-  //       setData({ products: data.products, isFetching: true });
+  //       setIsFetching(true);
+  //       setData({ products: data.products });
   //       const response = await axios.get(API_URL);
-  //       setData({ products: response.data.items, isFetching: false });
+  //       setIsFetching(false);
+
+  //       setData({ products: response.data.items });
   //     } catch (e) {
   //       console.log(e);
-  //       setData({ products: data.products, isFetching: false });
+  //       setIsFetching(false);
+
+  //       setData({ products: data.products });
   //     }
   //   };
   //   fetchData();
