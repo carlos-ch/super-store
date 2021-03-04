@@ -19,15 +19,20 @@ const StyledContainer = styled(ContentWrapper)`
 
 const ProductPage = () => {
   let itemId = useParams().id;
-  const [data, setData] = useState({ products: [], isFetching: false });
+  const [data, setData] = useState({ products: [] });
+  const [isFetching, setIsFetching] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsFetching(true);
         setData({ products: data.products, isFetching: true });
         const response = await axios.get(API_BASE_URL + itemId);
+        setIsFetching(false);
+
         setData({ products: [response.data], isFetching: false });
       } catch (e) {
         console.log(e);
+        setIsFetching(false);
         setData({ products: data.products, isFetching: false });
       }
     };
