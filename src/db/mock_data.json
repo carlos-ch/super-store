@@ -1,0 +1,257 @@
+{
+  "items": [
+    {
+      "isOnSale": false,
+      "stockCount": 2,
+      "_id": "5fbfff7d58aa65167efb52b9",
+      "name": "Bag Pipes",
+      "description": "Your mom won't be able to wait to hear you practice!",
+      "price": 120,
+      "avgRating": 0,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/bag_pipes.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 1,
+      "_id": "5fbfff7d58aa65167efb52b1",
+      "name": "Bangin' Headphones",
+      "description": "Walk around town with the coolest headphones on the market. The only problem is that you won't be able hear people talk about how cool your headphones are.",
+      "price": 120.99,
+      "avgRating": 4,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/headphones.jpg"
+    },
+    {
+      "isOnSale": true,
+      "stockCount": 1,
+      "_id": "5fbfff7d58aa65167efb52b5",
+      "name": "Barbed Wire Fence",
+      "description": "Trap your kids inside your yard with this barbed wire fence! They will never be able to escape and hurt themselves out in the real world. Instead they will just have to live with all of the emotional damage having you as a parent caused.",
+      "price": 2000,
+      "avgRating": 5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/barbed_wire_fence.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 3,
+      "_id": "5fbfff7d58aa65167efb52af",
+      "name": "Bike Pump",
+      "description": "Are your tires flat and sad? Give them some air with this state of the art bike pump! All of your friends will be jealous of how pumped up your tires are.",
+      "price": 22.22,
+      "avgRating": 2,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/bike_pump.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 4,
+      "_id": "5fbfff7d58aa65167efb52b2",
+      "name": "Dog",
+      "description": "It goes 'roof' and sometimes 'woof'.",
+      "price": 1200,
+      "avgRating": 5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/dog.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52b6",
+      "name": "Hot Dog",
+      "description": "It may need a quick trip in the microwave before you eat it. USDA approved.",
+      "price": 1.5,
+      "avgRating": 3,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/hot_dog.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 2,
+      "_id": "5fbfff7d58aa65167efb52b0",
+      "name": "Men's Dress Shoes",
+      "description": "Dazzle everyone in the room with these premium leather dress shoes. Everyone will be like \"OMG where did you get those shoes?\"",
+      "price": 80,
+      "avgRating": 3,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/mens_dress_shoes.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 5,
+      "_id": "5fbfff7d58aa65167efb52b3",
+      "name": "Propeller Hat",
+      "description": "It's a bird! No, it's a plane! Actally it's just some creepy guy wearing a propeller hat. Seriously, who invented these things?",
+      "price": 10.99,
+      "avgRating": 4,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/propeller_hat.jpg"
+    },
+    {
+      "isOnSale": true,
+      "stockCount": 0,
+      "_id": "5fbfff7d58aa65167efb52b8",
+      "name": "Rain Coat",
+      "description": "This is the type of coat you think of when you hear 'Rain Coat', yet you never see anyone wearing one like this. Hmm... 🤔",
+      "price": 42.99,
+      "avgRating": 5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/rain_coat.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 1,
+      "_id": "5fbfff7d58aa65167efb52b7",
+      "name": "Rooster",
+      "description": "YEP",
+      "price": 25.5,
+      "avgRating": 4,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/rooster.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 101,
+      "_id": "5fbfff7d58aa65167efb52ba",
+      "name": "Television",
+      "description": "Watch whatever you want in HD.",
+      "price": 450,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/television.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 1,
+      "_id": "5fbfff7d58aa65167efb52b4",
+      "name": "VHS Player",
+      "description": "Are all of your hipster friends jamming out to vynle, while you're listening to your fancy ipod? Well bring it back a couple decades with a VHS player. This may or may not have come from your local thrift shop to be resold at a higher price.",
+      "price": 60,
+      "avgRating": 3.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/vhs_player.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52bd",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52be",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52bf",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c0",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c1",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c2",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c3",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c4",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c5",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52c6",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52ae",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52bb",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    },
+    {
+      "isOnSale": false,
+      "stockCount": 8,
+      "_id": "5fbfff7d58aa65167efb52bc",
+      "name": "Wilson Evolution Basketball",
+      "description": "A super bouncy and grippy ball that will get you playing like the pros!",
+      "price": 65.99,
+      "avgRating": 4.5,
+      "imageUrl": "https://st-super-store.s3-us-west-2.amazonaws.com/images/wilson_evolution.jpg"
+    }
+  ],
+  "total": 29,
+  "hasMore": true,
+  "next": 26
+}

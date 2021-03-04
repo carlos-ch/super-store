@@ -9,9 +9,10 @@ Online store project that allows users to:
 ### Pages
 
 the app consists of three main pages
-home (/)
-deals (/deals)
-cart(/cart)
+
+- home (/)
+- deals (/deals)
+- cart(/cart)
 
 ## Develop in local machine
 

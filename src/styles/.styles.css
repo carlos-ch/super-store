@@ -1,6 +1,14 @@
-/* Ignore
-.help {
+Ignore .help {
   text-decoration: none;
   list-style: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-} */
+  max-width: 150px;
+  padding: 1rem;
+  border: 1px solid gray;
+  border-radius: 3px;
+  flex-wrap: wrap;
+  display: flex;
+  color: #f5f5f5;
+  background-color: #a3d6df;
+  align-self: center;
+}

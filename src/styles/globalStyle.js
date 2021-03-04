@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         text-rendering: optimizeLegibility;
-        background-color: antiquewhite;
+        background-color: whitesmoke;
     }
     a {
         display: inline-block;
@@ -57,6 +57,13 @@ const GlobalStyle = createGlobalStyle`
     }
     li {
         list-style: none;
+    }
+    img {
+        width:100%;
+        margin: 0;
+    }
+    figure {
+        margin: 0;
     }
 `;
 

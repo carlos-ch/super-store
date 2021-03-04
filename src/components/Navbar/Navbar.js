@@ -10,6 +10,7 @@ const StyledNavWrapper = styled(ContentWrapper)`
   align-items: center;
   width: 100%;
   height: 5rem;
+  margin-bottom: 3rem;
   background-color: rgb(1, 61, 85);
 `;
 
