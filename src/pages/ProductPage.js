@@ -42,7 +42,8 @@ const ProductPage = () => {
     };
     fetchData();
   }, []);
-  console.log(itemId, data, isFetching);
+  // console.log(itemId, data, isFetching);
+
   return (
     <StyledContainer>
       {isFetching ? (
