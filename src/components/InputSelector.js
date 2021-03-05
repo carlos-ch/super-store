@@ -34,17 +34,17 @@ const InputSelector = ({ data, setLowStock, setAlreadyInCart }) => {
   }, [contextValue, setAlreadyInCart, productId]);
 
   useEffect(() => {
-    const sufficientStock = validateStock(itemCount, data);
+    const sufficientStock = validateStock(itemCount, data, contextValue);
     console.log({ sufficientStock });
     if (!sufficientStock) {
       setLowStock(true);
     }
     return () => {
       setLowStock(false);
-      /* reset quantity input ? */
+      /* reset quantity input after exit modal/page ? */
       // setItemCount(0);
     };
-  }, [itemCount, data, setLowStock]);
+  }, [itemCount, data, setLowStock, contextValue]);
 
   // add product {id , and number} to cart
   const handleAddToCart = () => {
@@ -52,6 +52,8 @@ const InputSelector = ({ data, setLowStock, setAlreadyInCart }) => {
     setContext(oldCart => {
       const productIndex = oldCart.findIndex(i => i.id === productId);
       /* if item is already in cart */
+      if (itemCount === 0 || !validateStock(itemCount, data, contextValue))
+        return oldCart;
       if (productIndex !== -1) {
         updatedCart = [
           ...oldCart.slice(0, productIndex),
@@ -62,6 +64,7 @@ const InputSelector = ({ data, setLowStock, setAlreadyInCart }) => {
         /* if item is new to cart */
         updatedCart = [...oldCart, { id: productId, count: itemCount }];
       }
+      setItemCount(0);
       return updatedCart;
     });
   };
