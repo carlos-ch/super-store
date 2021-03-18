@@ -25,33 +25,32 @@ const StyledContainer = styled(ContentWrapper)`
 // const data = { products: productsOnSale };
 
 const DealsPage = () => {
-  const [data, setData] = useState({ products: [] });
+  const [productsData, setProductsData] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsFetching(true);
-        setData({ products: data.products });
         const response = await axios.get(API_URL);
         setIsFetching(false);
 
-        setData({ products: response.data.items });
+        setProductsData(response.data.items);
       } catch (e) {
         console.log(e);
         setIsFetching(false);
 
-        setData({ products: data.products });
+        setProductsData(productsData);
       }
     };
     fetchData();
   }, []);
   return (
     <StyledContainer>
-      {data.products && data.products.length > 0 ? (
-        <ItemList data={data.products} />
+      {productsData && productsData.length > 0 ? (
+        <ItemList data={productsData} />
       ) : (
-        <h3 className="feedback">
-          Couldn't find any deals <span>{'\u{1F614}'}</span>{' '}
+        <h3 className="feedback"> {isFetching ? 'Loading...' : "Couldn't find any deals" + <span>{'\u{1F614}'}</span>}
+           
         </h3>
       )}
     </StyledContainer>

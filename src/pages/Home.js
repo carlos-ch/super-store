@@ -23,33 +23,32 @@ const StyledContainer = styled(ContentWrapper)`
 // const data = { products: mockData.items.slice(0, 6) };
 
 const Home = () => {
-  const [data, setData] = useState({ products: [] });
+  const [productsData, setProductsData] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsFetching(true);
 
-        setData({ products: data.products });
         const response = await axios.get(API_URL);
         setIsFetching(false);
 
-        setData({ products: response.data.items });
+        setProductsData(response.data.items);
       } catch (e) {
         setIsFetching(false);
 
-        setData({ products: data.products });
+        setProductsData(productsData);
       }
     };
     fetchData();
   }, []);
-  console.log(data);
+  console.log(productsData);
   return (
     <StyledContainer>
       {isFetching ? (
         <h3 className="message">Loading...</h3>
       ) : (
-        <ItemList data={data.products} />
+        <ItemList data={productsData} />
       )}
     </StyledContainer>
   );

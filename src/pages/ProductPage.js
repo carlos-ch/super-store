@@ -20,7 +20,7 @@ const StyledContainer = styled(ContentWrapper)`
 
 const ProductPage = () => {
   let itemId = useParams().id;
-  const [data, setData] = useState({ products: [] });
+  const [productsData, setProductsData] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
 
   const [message, setMessage] = useState('');
@@ -29,15 +29,14 @@ const ProductPage = () => {
       try {
         setIsFetching(true);
         setMessage('Loading...');
-        setData({ products: data.products });
         const response = await axios.get(API_BASE_URL + itemId);
         setIsFetching(false);
-        setData({ products: [response.data] });
+        setProductsData([response.data]);
       } catch (e) {
         console.log(e);
         setMessage("Couldn't find item");
         setIsFetching(false);
-        setData({ products: data.products });
+        setProductsData(productsData);
       }
     };
     fetchData();
@@ -48,8 +47,8 @@ const ProductPage = () => {
     <StyledContainer>
       {isFetching ? (
         <h3 className="message">{message}</h3>
-      ) : data?.products.length > 0 ? (
-        <Product data={data.products[0]}></Product>
+      ) : productsData?.length > 0 ? (
+        <Product data={productsData[0]}></Product>
       ) : (
         <h3 className="message">{message}</h3>
       )}
