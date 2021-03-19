@@ -8,11 +8,13 @@ Online store project that allows users to:
 
 ### Pages
 
-the app consists of three main pages
+The app consists of three main pages
 
-- home (/)
-- deals (/deals)
-- cart(/cart)
+- Home (`/`)
+- Deals (`/deals`)
+- Cart(`/cart`)
+  You can also find an item through it's unique id
+- product page (`/item/:id`)
 
 ## Develop in local machine
 
@@ -36,7 +38,7 @@ $ npm install super-store
 
 ## Available Scripts
 
-In the project directory, you can run:
+Inside the project directory, you can run:
 
 ### `npm start`
 

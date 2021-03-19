@@ -1,18 +1,13 @@
-import React from 'react';
-import ContentWrapper from '../styles/contentWrapper';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Rating from '../components/Rating';
-import Button from '../styles/button';
+import Badge from '../styles/badge';
+import Banner from '../styles/banner';
+import InputSelector from './InputSelector';
+import { CartContext } from '../contexts/CartContext';
+import { validateStock } from '../utils/cartUtils';
 
-// const StyledContainer = styled(ContentWrapper)`
-//   && {
-//     width: 100%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//   }
-// `;
+
 
 const StyledContainer = styled.article`
   display: flex;
@@ -23,14 +18,6 @@ const StyledContainer = styled.article`
   padding: 1.5rem 2.4rem;
   margin: 0 auto;
   max-width: 450px;
-  // background-color: whitesmoke;
-  // background: linear-gradient(
-  //   0deg,
-  //   rgba(245, 245, 245, 1) 0%,
-  //   rgba(255, 255, 255, 1) 100%
-  // );
-  // box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.14);
-  // border-radius: 5px;
 
   @media (min-width: 960px) {
     flex-direction: row;
@@ -68,66 +55,96 @@ const StyledContainer = styled.article`
       border-radius: 3px;
       height: 2rem;
       margin-left: 0.5rem;
+      text-align: center;
       border: none;
     }
-  }
-
-  .badge {
-    display: inline-block;
-    padding: 0.25em 0.4em;
-    font-size: 75%;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: 0.25rem;
-  }
-  .badge-sale {
-    color: #fff;
-    margin-left: 0.5rem;
-    // margin-right: 1rem;
-    background-color: #dc3545;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  && {
-    align-self: center;
   }
 `;
 
 const Product = ({ data }) => {
-  const message = true;
-  console.log(data);
+  const productId = data._id;
+  const [alreadyInCart, setAlreadyInCart] = useState(0);
+  const [lowStock, setLowStock] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
+
+  const [contextValue, setContext] = useContext(CartContext);
+
+
+
+    // add product {id , and number} to cart
+  const handleAddToCart = () => {
+    let updatedCart = [];
+    setContext(oldCart => {
+      const productIndex = oldCart.findIndex(i => i.id === productId);
+      /* if item is already in cart */
+      if (itemCount === 0 || !validateStock(itemCount, data, contextValue))
+        return oldCart;
+      if (productIndex !== -1) {
+        updatedCart = [
+          ...oldCart.slice(0, productIndex),
+          { id: productId, count: oldCart[productIndex].count + itemCount },
+          ...oldCart.slice(productIndex + 1),
+        ];
+      } else {
+        /* if item is new to cart */
+        updatedCart = [...oldCart, { id: productId, count: itemCount }];
+      }
+      setItemCount(0);
+      return updatedCart;
+    });
+  };
+
+    useEffect(() => {
+    // resets item count to display
+    setAlreadyInCart(0);
+
+    const itemInCart = contextValue.filter(i => i.id === productId);
+    if (itemInCart.length > 0) {
+      setAlreadyInCart(itemInCart[0].count);
+    }
+  }, [contextValue, setAlreadyInCart, productId]);
+
+    useEffect(() => {
+    const sufficientStock = validateStock(itemCount, data, contextValue);
+    if (!sufficientStock) {
+      setLowStock(true);
+    }
+    return () => {
+      setLowStock(false);
+      /* reset quantity input after exit modal/page ? */
+      // setItemCount(0);
+    };
+  }, [itemCount, data, setLowStock, contextValue]);
+
   return (
     <StyledContainer>
-      {/* {children} */}
       <figure className="product-img">
         <img src={data.imageUrl} alt={data.name} />
       </figure>
       <div className="product-details">
         <p className="product-name">{data.name}</p>
 
-        {/* <div className="rate">rating</div> */}
         <Rating rateScore={data.avgRating} count={data.stockCount} />
         <p className="description">{data.description}</p>
         <div className="price">
           <p>
             ${data.price}
-            {data.isOnSale && <span className="badge badge-sale">On sale</span>}
+            {data.isOnSale && <Badge sale>On sale</Badge>}
           </p>
         </div>
-        <div className="quantity-count">
-          <p>Quantity:</p>
-          <input type="number" min="1" max="100" />
-        </div>
-        <StyledButton className="btn-add">Add to cart</StyledButton>
-        {message && <div>Message</div>}
+        <InputSelector
+          data={data}
+          handleAddToCart={handleAddToCart}
+          itemCount={itemCount}
+          setItemCount={setItemCount}
+        ></InputSelector>
+        {lowStock && <Banner type="warning">Insufficient stock!</Banner>}
+        {alreadyInCart > 0 && (
+          <Banner type="info">
+            {alreadyInCart} of this item already in your cart.
+          </Banner>
+        )}
       </div>
-      {/* <button className="btn-cta" onClick={() => handleOpen(data)}>
-        View Item
-      </button> */}
     </StyledContainer>
   );
 };
