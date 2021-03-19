@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../styles/button';
-import { CartContext } from '../contexts/CartContext';
-import { validateStock } from '../utils/cartUtils';
 
 const StyledButton = styled(Button)`
   && {
@@ -10,65 +8,12 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const InputSelector = ({ data, setLowStock, setAlreadyInCart }) => {
-  const productId = data._id;
-  const [contextValue, setContext] = useContext(CartContext);
-  const [itemCount, setItemCount] = useState(0);
+const InputSelector = ({ data, handleAddToCart, itemCount, setItemCount }) => {
 
   const handleInputChange = e => {
     const parsedInt = parseInt(e.target.value) || 0;
     setItemCount(parsedInt);
   };
-  useEffect(() => {
-    // resets item count to display
-    setAlreadyInCart(0);
-
-    const itemInCart = contextValue.filter(i => i.id === productId);
-    console.log({ contextValue, itemInCart });
-    if (itemInCart.length > 0) {
-      setAlreadyInCart(itemInCart[0].count);
-    }
-    // return () => {
-    // setAlreadyInCart(0);
-    // };
-  }, [contextValue, setAlreadyInCart, productId]);
-
-  useEffect(() => {
-    const sufficientStock = validateStock(itemCount, data, contextValue);
-    console.log({ sufficientStock });
-    if (!sufficientStock) {
-      setLowStock(true);
-    }
-    return () => {
-      setLowStock(false);
-      /* reset quantity input after exit modal/page ? */
-      // setItemCount(0);
-    };
-  }, [itemCount, data, setLowStock, contextValue]);
-
-  // add product {id , and number} to cart
-  const handleAddToCart = () => {
-    let updatedCart = [];
-    setContext(oldCart => {
-      const productIndex = oldCart.findIndex(i => i.id === productId);
-      /* if item is already in cart */
-      if (itemCount === 0 || !validateStock(itemCount, data, contextValue))
-        return oldCart;
-      if (productIndex !== -1) {
-        updatedCart = [
-          ...oldCart.slice(0, productIndex),
-          { id: productId, count: oldCart[productIndex].count + itemCount },
-          ...oldCart.slice(productIndex + 1),
-        ];
-      } else {
-        /* if item is new to cart */
-        updatedCart = [...oldCart, { id: productId, count: itemCount }];
-      }
-      setItemCount(0);
-      return updatedCart;
-    });
-  };
-
   return (
     <div>
       <div className="quantity-count">

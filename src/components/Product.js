@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Rating from '../components/Rating';
 import Badge from '../styles/badge';
 import Banner from '../styles/banner';
 import InputSelector from './InputSelector';
+import { CartContext } from '../contexts/CartContext';
+import { validateStock } from '../utils/cartUtils';
+
+
 
 const StyledContainer = styled.article`
   display: flex;
@@ -58,9 +62,59 @@ const StyledContainer = styled.article`
 `;
 
 const Product = ({ data }) => {
-  // const productId = data._id;
+  const productId = data._id;
   const [alreadyInCart, setAlreadyInCart] = useState(0);
   const [lowStock, setLowStock] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
+
+  const [contextValue, setContext] = useContext(CartContext);
+
+
+
+    // add product {id , and number} to cart
+  const handleAddToCart = () => {
+    let updatedCart = [];
+    setContext(oldCart => {
+      const productIndex = oldCart.findIndex(i => i.id === productId);
+      /* if item is already in cart */
+      if (itemCount === 0 || !validateStock(itemCount, data, contextValue))
+        return oldCart;
+      if (productIndex !== -1) {
+        updatedCart = [
+          ...oldCart.slice(0, productIndex),
+          { id: productId, count: oldCart[productIndex].count + itemCount },
+          ...oldCart.slice(productIndex + 1),
+        ];
+      } else {
+        /* if item is new to cart */
+        updatedCart = [...oldCart, { id: productId, count: itemCount }];
+      }
+      setItemCount(0);
+      return updatedCart;
+    });
+  };
+
+    useEffect(() => {
+    // resets item count to display
+    setAlreadyInCart(0);
+
+    const itemInCart = contextValue.filter(i => i.id === productId);
+    if (itemInCart.length > 0) {
+      setAlreadyInCart(itemInCart[0].count);
+    }
+  }, [contextValue, setAlreadyInCart, productId]);
+
+    useEffect(() => {
+    const sufficientStock = validateStock(itemCount, data, contextValue);
+    if (!sufficientStock) {
+      setLowStock(true);
+    }
+    return () => {
+      setLowStock(false);
+      /* reset quantity input after exit modal/page ? */
+      // setItemCount(0);
+    };
+  }, [itemCount, data, setLowStock, contextValue]);
 
   return (
     <StyledContainer>
@@ -80,8 +134,9 @@ const Product = ({ data }) => {
         </div>
         <InputSelector
           data={data}
-          setAlreadyInCart={setAlreadyInCart}
-          setLowStock={setLowStock}
+          handleAddToCart={handleAddToCart}
+          itemCount={itemCount}
+          setItemCount={setItemCount}
         ></InputSelector>
         {lowStock && <Banner type="warning">Insufficient stock!</Banner>}
         {alreadyInCart > 0 && (
