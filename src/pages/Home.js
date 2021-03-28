@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import ItemList from '../components/ItemList';
-import styled from 'styled-components';
-import ContentWrapper from '../styles/contentWrapper';
+import React, { useEffect, useState } from "react";
+import ItemList from "../components/ItemList";
+import styled from "styled-components";
+import ContentWrapper from "../styles/contentWrapper";
 // import mockData from '../db/mock_data.json';
-import axios from 'axios';
+import axios from "axios";
+import SearchBar from "../components/SearchBar";
+import SearchField from "../components/Search/SearchField";
 
 const API_URL =
-  'https://gp-super-store-api.herokuapp.com/item/list?size=6&sortDir=asc';
+  "https://gp-super-store-api.herokuapp.com/item/list?size=6&sortDir=asc";
 
 const StyledContainer = styled(ContentWrapper)`
   && {
@@ -45,6 +47,7 @@ const Home = () => {
   console.log(productsData);
   return (
     <StyledContainer>
+      <SearchField></SearchField>
       {isFetching ? (
         <h3 className="message">Loading...</h3>
       ) : (
