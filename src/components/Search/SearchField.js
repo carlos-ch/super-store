@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "../../styles/button";
 import SearchBar from "../SearchBar";
@@ -19,10 +19,21 @@ const StyledForm = styled.form`
 
 const icon = <img className="icon" src={searchIcon} alt="search"></img>;
 
-const SearchField = () => {
+const SearchField = ({ onSearch }) => {
+  const [input, setInput] = useState("");
+  console.log(input);
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    onSearch(input);
+    // setSearch(input);
+  };
+
   return (
-    <StyledForm>
-      <SearchBar></SearchBar>
+    <StyledForm onSubmit={(e) => handlerSubmit(e)}>
+      <SearchBar
+        onSearch={onSearch}
+        onInput={(e) => setInput(e.target.value)}
+      ></SearchBar>
       <Button>{icon}</Button>
     </StyledForm>
   );

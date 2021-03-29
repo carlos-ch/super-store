@@ -4,7 +4,6 @@ import styled from "styled-components";
 import ContentWrapper from "../styles/contentWrapper";
 // import mockData from '../db/mock_data.json';
 import axios from "axios";
-import SearchBar from "../components/SearchBar";
 import SearchField from "../components/Search/SearchField";
 
 const API_URL =
@@ -18,7 +17,7 @@ const StyledContainer = styled(ContentWrapper)`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    // justify-content: space-between;
   }
 `;
 /* use this to feed with mockData */
@@ -27,12 +26,27 @@ const StyledContainer = styled(ContentWrapper)`
 const Home = () => {
   const [productsData, setProductsData] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const onSearch = (query) => {
+    console.log({ query });
+    setSearch(`&q=${query}`);
+    // const response = await axios.get(API_URL + `&q=${query}`)
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsFetching(true);
+        let response;
+        if (search) {
+          response = await axios.get(API_URL + search);
+          // setIsFetching(false);
 
-        const response = await axios.get(API_URL);
+          setProductsData(response.data.items);
+        } else {
+          response = await axios.get(API_URL);
+        }
         setIsFetching(false);
 
         setProductsData(response.data.items);
@@ -43,15 +57,19 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [search]);
   console.log(productsData);
   return (
     <StyledContainer>
-      <SearchField></SearchField>
+      <SearchField onSearch={onSearch}></SearchField>
       {isFetching ? (
         <h3 className="message">Loading...</h3>
-      ) : (
+      ) : productsData.length > 0 ? (
         <ItemList data={productsData} />
+      ) : (
+        <h3 className="feedback">
+          Couldn't find this item <span>{"\u{1F614}"}</span>
+        </h3>
       )}
     </StyledContainer>
   );

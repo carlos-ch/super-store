@@ -14,6 +14,14 @@ const StyledInput = styled.input`
   }
 `;
 
-const SearchBar = () => <StyledInput placeholder="Search" />;
+const SearchBar = (props) => {
+  return (
+    <StyledInput
+      type="search"
+      placeholder="Search"
+      onChange={(e) => props.onInput(e)}
+    />
+  );
+};
 
 export default SearchBar;

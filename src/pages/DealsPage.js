@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import ItemList from '../components/ItemList';
-import styled from 'styled-components';
-import ContentWrapper from '../styles/contentWrapper';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import ItemList from "../components/ItemList";
+import styled from "styled-components";
+import ContentWrapper from "../styles/contentWrapper";
+import axios from "axios";
 
 // import mockData from '../db/mock_data.json';
 
 const API_URL =
-  'https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&isOnSale=true';
+  "https://gp-super-store-api.herokuapp.com/item/list?sortDir=asc&isOnSale=true";
 
 const StyledContainer = styled(ContentWrapper)`
   && {
@@ -49,8 +49,11 @@ const DealsPage = () => {
       {productsData && productsData.length > 0 ? (
         <ItemList data={productsData} />
       ) : (
-        <h3 className="feedback"> {isFetching ? 'Loading...' : "Couldn't find any deals" + <span>{'\u{1F614}'}</span>}
-           
+        <h3 className="feedback">
+          {" "}
+          {isFetching
+            ? "Loading..."
+            : "Couldn't find any deals" + <span>{"\u{1F614}"}</span>}
         </h3>
       )}
     </StyledContainer>
