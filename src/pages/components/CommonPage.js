@@ -91,6 +91,7 @@ const CommonPage = ({ isDealsPage }) => {
         onPageChange={onPageChange}
         currentPage={page}
         totalItems={totalItems}
+        pageSize={pageSize}
       />
     </StyledContainer>
   );

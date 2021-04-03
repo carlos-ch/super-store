@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Button from '../../styles/button';
 
@@ -38,8 +38,8 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Pagination = ({ onPageChange, currentPage, totalItems }) => {
-  const totalPages = Math.floor(totalItems / 6);
+const Pagination = ({ onPageChange, currentPage, totalItems, pgSize }) => {
+  const totalPages = Math.floor(totalItems / pgSize);
 
   const handleFirstPage = () => {
     onPageChange(0);
