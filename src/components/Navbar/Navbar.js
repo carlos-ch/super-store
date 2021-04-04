@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import ContentWrapper from '../../styles/contentWrapper';
-import Logo from '../Logo';
-import Links from './Links';
+import React from "react";
+import styled from "styled-components";
+import ContentWrapper from "../../styles/contentWrapper";
+import Logo from "../Logo";
+import Links from "./Links";
 
 const StyledNavWrapper = styled(ContentWrapper)`
   display: flex;
@@ -10,7 +10,7 @@ const StyledNavWrapper = styled(ContentWrapper)`
   align-items: center;
   width: 100%;
   height: 5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   background-color: rgb(1, 61, 85);
 `;
 

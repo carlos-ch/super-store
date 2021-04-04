@@ -9,6 +9,7 @@ const StyledModal = styled.div`
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
   display: ${props => (props.show ? 'block' : 'none')};
+  z-index: 10;
   .modal-section {
     position: fixed;
     background: whitesmoke;
@@ -23,7 +24,6 @@ const StyledModal = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
-    z-index: 10;
   }
 `;
 
